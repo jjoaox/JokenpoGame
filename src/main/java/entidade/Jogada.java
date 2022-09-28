@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 public class Jogada {
@@ -21,8 +22,10 @@ public class Jogada {
 	@Column
 	private String jogada2;
 	private String resultado;
-	@Temporal(TemporalType.DATE)
-	private Date data;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data = new Date();
+	@Transient
+	private transient boolean editando;
 	
 	public Integer getId() {
 		return id;
@@ -66,5 +69,10 @@ public class Jogada {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+	public boolean isEditando() {
+		return editando;
+	}
+	public void setEditando(boolean editando) {
+		this.editando = editando;
+	}
 }

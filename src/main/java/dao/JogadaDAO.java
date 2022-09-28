@@ -17,6 +17,8 @@ public class JogadaDAO {
 		em.close();
 	}
 	
+	
+	
 	public static void atualizar(Jogada j) {
 		EntityManager em = JPAUtil.criarEntityManager();
 		em.getTransaction().begin();

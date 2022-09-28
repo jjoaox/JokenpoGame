@@ -16,16 +16,20 @@
 	            	<p:autoUpdate/>
 	        	</p:messages>
 	        	<p:link outcome="index" value="voltar"/>
-	        	<p:dataTable value="#{jogadaBean.jogadas}" var="j">
-	        		<p:column headerText="Jogador 1:"><p:outputLabel value="#{j.jogador1}"/></p:column>
-	        		<p:column headerText="Jogada 1:"><p:outputLabel value="#{j.jogada1}"/></p:column>
-	        		<p:column headerText="Jogador 2:"><p:outputLabel value="#{j.jogador2}"/></p:column>
-	        		<p:column headerText="Jogada 2:"><p:outputLabel value="#{j.jogada2}"/></p:column>
-	        		<p:column headerText="Resultado"><p:outputLabel value="#{j.resultado}"/></p:column>
-	        		<p:column headerText="Data"><p:outputLabel value="#{j.data}"/></p:column>
-	        		<p:column><p:commandButton value="Editar" action="#{jogadaBean.atualizar}"/></p:column>
-	        		<p:column><p:commandButton value="Excluir" action="#{jogadaBean.deletar}"/></p:column>
-	        	</p:dataTable>
+	        	<h:form>
+		        	<p:dataTable value="#{jogadaBean.jogadas}" var="j">
+		        		<h:outputText value="j.jogador1" rendered="#{not j.editando}"></h:outputText>
+		        		<h:inputText value="j.jogador1" rendered="#{j.editando}"></h:inputText>
+		        		<p:column headerText="Jogador 1:"><p:outputLabel value="#{j.jogador1}"/></p:column>
+		        		<p:column headerText="Jogada 1:"><p:outputLabel value="#{j.jogada1}"/></p:column>
+		        		<p:column headerText="Jogador 2:"><p:outputLabel value="#{j.jogador2}"/></p:column>
+		        		<p:column headerText="Jogada 2:"><p:outputLabel value="#{j.jogada2}"/></p:column>
+		        		<p:column headerText="Resultado"><p:outputLabel value="#{j.resultado}"/></p:column>
+		        		<p:column headerText="Data"><p:outputLabel value="#{j.data}"/></p:column>
+		        		<p:column><p:commandButton value="Editar" actionListener="#{jogadaBean.atualizar(j)}"/></p:column>
+		        		<p:column><p:commandButton value="Excluir" actionListener="#{jogadaBean.deletar(j)}"/></p:column>
+		        	</p:dataTable>
+	        	</h:form>
 			</p:panel>
 	
 	</h:body>
